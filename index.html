@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <script defer src="./calendar02.js"></script>
+    <!--defer:브라우저가 스크립트 문서분석 이후에 실행해야 함을 나타내는 불리언 속성(외부참조만 가능)-->
+    <link rel="stylesheet" href="./calendar.css">
+</head>
+<body>
+    <!--div.calendar>div.header>div.year_month+div.nav>button.nav_btn_go_prev{&lt;}+button.nav_btn_go_today{Today}+button.nav_btn_go_next{&gt;}^^div.main>div.days>div.day{$$}*7-->
+    <!--나중에 css 적용을 위해 nav_btn 사이와 다른 이름 사이 _(언더바)없애기-->
+    <div class="calendar">
+        <div class="header">
+            <div class="year_month"></div>
+            <div class="nav">
+                <button class="nav_btn go_prev" onclick="prevMonth()">&lt;</button>
+                <button class="nav_btn go_today" onclick="goToday()">Today</button>
+                <button class="nav_btn go_next" onclick="nextMonth()">&gt;</button></div>
+        </div>
+        <div class="main">
+            <div class="days">
+                <div class="day">일</div>
+                <div class="day">월</div>
+                <div class="day">화</div>
+                <div class="day">수</div>
+                <div class="day">목</div>
+                <div class="day">금</div>
+                <div class="day">토</div>
+            </div>
+            <div class="dates"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,127 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    /*테두리 포함한 크기 지정*/
+}
+body {
+    display: flex; /*가로로 정렬 및 크기 맞추기*/
+    justify-content: center; /*중심축을 기준으로 하는 배치방식 결정/ align-content:반대축을 기준으로 하는 배치방식을 결정*/
+    align-items: center; /*내부 항목 수직 가운데로*/
+    min-height: 100vh; 
+    /*vh, vw : 뷰포트의 높이값과 너비값 1vh=1/100(뷰 크기)*/
+    /*vmin, vmax 예) 너비 1100px, 높이 700px => 1vmin=7px, 1vmax=11px*/
+}
+.calendar{
+    width: 600px;
+    margin: 50px;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    /*space-around:box를 둘러싼 공백생성(겹치는 부분과 그렇지 않은 부분 차이)
+    space-evenly:동일한 공백을 생성
+    space-between:box사이 공백만 주고 양끝은 공백 없이 배치*/
+    align-items: center;
+}
+.year_month{
+    font-size: 35px;
+}
+.nav{
+    display: flex;
+    border: 1px solid #333333;
+    border-radius: 5px;
+}
+.nav_btn{
+    width: 28px;
+    height: 30px;
+    border: none;
+    font-size: 16px;
+    line-height: 32px; /*글자 위치 높낮이 지정(원래 위치에서 살짝 내렸음)*/
+    background-color: transparent;
+    cursor: pointer;
+}
+.go_today{
+    width: 75px;
+    border-left: 1px solid #333333;
+    border-right: 1px solid #333333;
+}
+
+/*요일 및 달력*/
+.days {
+    display: flex;
+    margin: 25px 0 10px;
+} 
+.day {
+    width: calc(100% / 7);
+    text-align: center;
+} 
+.dates { /*날짜 칸*/ 
+    /*날짜 문자열 통합이라서 개별로 날짜마다 선 줄 수 없음*/
+    display: flex;
+    flex-flow: row wrap; /*부모요소 크기에 맞추어 가로(세로:column wrap)로 순서대로 정렬*/
+    /*wrap없으면 겹침(기본값nowrap)*/
+    height: 500px;
+    border-top: 1px solid #333333;
+    border-right: 1px solid #333333;
+}  
+.date { /*날짜 숫자*/
+    /*날짜칸에 전부 테두리 주면 겹쳐서 일부 선 두껍게 나옴.*/ 
+    width: calc(100% / 7);
+    padding: 15px;
+    text-align: right;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #333333;
+}
+
+/*토,일 색깔*/
+.day:nth-child(7n + 1),
+.date:nth-child(7n + 1) {
+  color: #D13E3E;
+/*nth-child: 선택하려는 요소의 인덱스 패턴 나타냄(n은 0부터 시작.*/
+/*7n+1 : 1, 8, 15...*/
+/*n은 0부터지만, 적용 순서는 1부터 시작(1=일요일)*/
+}
+
+.day:nth-child(7n),
+.date:nth-child(7n) {
+  color: #396EE2;
+  /*7n : 0, 7, 14...*/
+}
+
+/*본월 외의 날짜 투명도 낮추기*/
+.other {
+    opacity: 0.3;
+}
+
+/*오늘 날짜 표시하기*/
+.today {
+    position: relative;
+    /*static:기본값, 
+    relative:요소 자기자신을 기준으로 배치, 
+    absolute:부모(조상) 요소를 기준으로 배치(조상 없으면, window객체의 뷰포트를 기준), 
+    fixed:뷰포트 기준으로 배치, 
+    stickey:스크롤 영역 기준으로 배치*/
+    color: #FFFFFF;
+}
+.today::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    /*z-index:작을 수록 뒤로 간다*/
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: #FF0000;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    content: ' ';
+}
+
+
+
+
+
+
